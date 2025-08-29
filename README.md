@@ -14,6 +14,8 @@ The 3 input neurons correspond to:
 
 The bird flaps only its wings when the first output neuron is greater than the second.
 
+The AI can still learn to play the game perfectly even without the third input (and in fact it would make training a lot simpler), but I still kept it because having only 2 input neurons is boring.
+
 How to run:
 ```
 git clone https://github.com/Galm007/flappy_bird_AI && cd flappy_bird_AI
