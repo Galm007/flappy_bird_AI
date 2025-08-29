@@ -1,24 +1,24 @@
-# flappy_bird_raylib
-Flappy bird game made with the Raylib library complete with sound effects, animations, game over screen, and changing background colors and bird skins, written in C.
+# flappy_bird_AI
+A genetic algorithm implementation that learns to play flappy bird, forked from my [flappy bird game](https://github.com/Galm007/flappy_bird_raylib) made with the Raylib library, written in C.
 
+This video demonstrates the AI learning to play the game with the difficulty ramped all the way up. The spacing between the pipes is minimal while the vertical gap is as small as it gets. The AI learned to master the game under these circumstances in only 8 generations.
 
-https://github.com/user-attachments/assets/34bc6bca-e747-4d07-a946-8c5a8b3d4eb8
+https://github.com/user-attachments/assets/ea4f9cd1-5703-4039-979e-79bd000d9203
+
+The shape of the neural network is 3x2x2x2.
+
+The 3 input neurons correspond to:
+- Y position of the next pipe (ratio to window height)
+- Y position of the bird (ratio to window height)
+- Bird's horizontal distance from the next pipe (ratio to window width)
+
+The bird flaps only its wings when the first output neuron is greater than the second.
 
 How to run:
 ```
-git clone https://github.com/Galm007/flappy_bird_raylib && cd flappy_bird_raylib
+git clone https://github.com/Galm007/flappy_bird_AI && cd flappy_bird_AI
 mkdir build && cd build
 cmake ..
 make
 ./flappy_bird
 ```
-    
-<table>
-  <tr>
-    <td><img width="806" height="1433" alt="Screenshot_20250711_012440" src="https://github.com/user-attachments/assets/40ede242-3031-46a9-87dc-ef5098c4dbd5" /></td>
-    <td><img width="811" height="1435" alt="Screenshot_20250711_012709" src="https://github.com/user-attachments/assets/e1686e1a-38c7-46e3-b43a-7207d4badab3" /></td>
-    <td><img width="801" height="1431" alt="Screenshot_20250711_012520" src="https://github.com/user-attachments/assets/4cacc476-f342-4221-a833-20b5aa73f4d1" /></td>
-    <td><img width="814" height="1438" alt="Screenshot_20250711_012409" src="https://github.com/user-attachments/assets/55801810-a930-498a-beb9-d918d42f4006" /></td>
-    <td><img width="805" height="1434" alt="Screenshot_20250711_012634" src="https://github.com/user-attachments/assets/0371bb35-6eb1-4b7f-b739-0d80d2be3adc" /></td>
-  </tr>
-</table>
