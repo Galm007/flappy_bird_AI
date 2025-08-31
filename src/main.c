@@ -70,7 +70,7 @@ int main() {
 		population[i] = bird_new();
 		nn_new(&nn[i]);
 	}
-	initialize_pipes();
+	initialize_pipes(&pipetex[bg_skin]);
 
 	point_timer = (pipes[0].x - population[0].pos.x) / SCROLL_SPEED;
 	int gen = 0;
@@ -133,7 +133,7 @@ int main() {
 			// reset
 			for (int i = 0; i < POPULATION; i++)
 				population[i] = bird_new();
-			initialize_pipes();
+			initialize_pipes(&pipetex[bg_skin]);
 			point_timer = (pipes[0].x - population[0].pos.x) / SCROLL_SPEED;
 			score = 0;
 			bg_skin = !bg_skin;

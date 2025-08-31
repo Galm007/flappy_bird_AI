@@ -7,11 +7,11 @@
 
 Vector2 pipes[PIPE_COUNT];
 
-void initialize_pipes() {
+void initialize_pipes(Texture* pipetex) {
 	for (int i = 0; i < PIPE_COUNT; i++)
 		pipes[i] = (Vector2) {
 			SCREEN_WIDTH + 50.0f + PIPE_SPREAD * i,
-			GetRandomValue(PIPE_GAP + 40.0f, SCREEN_HEIGHT - GROUND_HEIGHT - PIPE_GAP - 40.0f),
+			GetRandomValue(SCREEN_HEIGHT - GROUND_HEIGHT - pipetex->height - PIPE_GAP, pipetex->height + PIPE_GAP),
 		};
 }
 
