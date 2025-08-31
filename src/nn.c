@@ -27,11 +27,14 @@ float nn_feedforward(NeuralNetwork* nn, float inputs[3]) {
 	int wshift = 0, bshift = 0;
 	for (int i = 1; i < 4; i++) {
 		for (int j = 0; j < nn_shape[i]; j++) {
+			buffer[i % 2][j] = 0.0f;
 			for (int k = 0; k < nn_shape[i - 1]; k++) {
-				buffer[i % 2][j] += buffer[(i - 1) % 2][k] * nn->weight[wshift++] + nn->bias[bshift];
+				buffer[i % 2][j] += buffer[(i - 1) % 2][k] * nn->weight[wshift++];
 			}
+			if (buffer[i % 2][j] < 0.0f)
+				buffer[i % 2][j] = 0.0f;
+			bshift++;
 		}
-		bshift++;
 	}
 
 	return buffer[1][0] - buffer[1][1];
