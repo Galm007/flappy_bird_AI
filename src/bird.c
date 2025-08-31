@@ -39,7 +39,7 @@ void bird_kill(Bird* bird) {
 }
 
 void bird_update(float ft, Bird* bird, float next_pipe_y) {
-	if (bird->alive) {
+	if (bird->alive && bird->pos.y > 0.0f) {
 		float dist = fabsf(bird->pos.y - next_pipe_y);
 		if (dist == 0.0f)
 			dist = 0.001f;
