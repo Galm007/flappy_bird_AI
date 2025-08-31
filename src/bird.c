@@ -40,7 +40,11 @@ void bird_kill(Bird* bird) {
 
 void bird_update(float ft, Bird* bird, float next_pipe_y) {
 	if (bird->alive) {
-		bird->score += (score + 1) * SCREEN_HEIGHT / fabsf(bird->pos.y - next_pipe_y);
+		float dist = fabsf(bird->pos.y - next_pipe_y);
+		if (dist == 0.0f)
+			dist = 0.001f;
+
+		bird->score += (score + 1) * SCREEN_HEIGHT / dist;
 	}
 
 	// gravity
