@@ -102,7 +102,7 @@ int main() {
 			};
 			if (nn_feedforward(&nn[i], nn_inputs) > 0.0f)
 				bird_flap(&population[i]);
-			bird_update(ft, &population[i]);
+			bird_update(ft, &population[i], p.y);
 		}
 
 		// point timer

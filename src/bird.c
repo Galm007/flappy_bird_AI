@@ -3,6 +3,7 @@
 #include "sprite.h"
 #include "game_state.h"
 
+#include <math.h>
 #include <stdbool.h>
 #include <raylib.h>
 
@@ -14,7 +15,7 @@ Sound wingfx, hitfx, diefx;
 
 Bird bird_new() {
 	Bird bird = {
-		.pos = (Vector2) { SCREEN_WIDTH / 4.0f, GetRandomValue(200, SCREEN_HEIGHT - 200) },
+		.pos = (Vector2) { SCREEN_WIDTH / 4.0f, SCREEN_HEIGHT / 2.0f },
 		.vely = 0.0f,
 		.rot = 0.0f,
 		.alive = true,
@@ -37,9 +38,9 @@ void bird_kill(Bird* bird) {
 	PlaySound(hitfx);
 }
 
-void bird_update(float ft, Bird* bird) {
+void bird_update(float ft, Bird* bird, float next_pipe_y) {
 	if (bird->alive) {
-		bird->score += (score + 1);
+		bird->score += (score + 1) * SCREEN_HEIGHT / fabsf(bird->pos.y - next_pipe_y);
 	}
 
 	// gravity
