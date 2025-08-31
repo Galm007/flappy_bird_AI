@@ -127,7 +127,7 @@ int main() {
 		if (all_dead) {
 			// genetic crossover
 			bird_sort(population, nn);
-			nn_cross_multiple(nn, 24);
+			nn_cross_best(nn, 4);
 			printf("gen %d: %f\n", gen++, population[0].score);
 
 			// reset

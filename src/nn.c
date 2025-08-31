@@ -62,13 +62,15 @@ void nn_cross(NeuralNetwork* dest, NeuralNetwork* a, NeuralNetwork* b) {
 			dest->bias[i] = RANDF() * 2.0f - 1.0f;
 }
 
-void nn_cross_multiple(NeuralNetwork* nn_arr, int best_cutoff) {
+void nn_cross_best(NeuralNetwork* nn_arr, int best_cutoff) {
 	int c = 0;
-	for (int i = 0; i < best_cutoff; i++) {
-		for (int j = 0; j < best_cutoff - i - 1; j++) {
-			nn_cross(&nn_arr[best_cutoff + c], &nn_arr[i], &nn_arr[i + j + 1]);
-			if (++c >= POPULATION - best_cutoff)
-				return;
+	for (;;) {
+		for (int i = 0; i < best_cutoff; i++) {
+			for (int j = 0; j < best_cutoff - i - 1; j++) {
+				nn_cross(&nn_arr[best_cutoff + c], &nn_arr[i], &nn_arr[i + j + 1]);
+				if (++c >= POPULATION - best_cutoff)
+					return;
+			}
 		}
 	}
 }

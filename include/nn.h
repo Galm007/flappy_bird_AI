@@ -15,7 +15,6 @@ void nn_new(NeuralNetwork* nn);
 void nn_free(NeuralNetwork* nn);
 float nn_feedforward(NeuralNetwork* nn, float inputs[3]);
 void nn_cross(NeuralNetwork* res, NeuralNetwork* a, NeuralNetwork* b);
-
-void nn_cross_multiple(NeuralNetwork* nns, int best_cutoff);
+void nn_cross_best(NeuralNetwork* nns, int best_cutoff);
 
 #endif
