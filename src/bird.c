@@ -3,7 +3,6 @@
 #include "sprite.h"
 #include "game_state.h"
 
-#include <math.h>
 #include <stdbool.h>
 #include <raylib.h>
 
@@ -38,13 +37,9 @@ void bird_kill(Bird* bird) {
 	PlaySound(hitfx);
 }
 
-void bird_update(float ft, Bird* bird, float next_pipe_y) {
+void bird_update(float ft, Bird* bird) {
 	if (bird->alive && bird->pos.y > 0.0f) {
-		float dist = fabsf(bird->pos.y - next_pipe_y);
-		if (dist == 0.0f)
-			dist = 0.001f;
-
-		bird->score += (score + 1) * SCREEN_HEIGHT / dist;
+		bird->score += (score + 1);
 	}
 
 	// gravity

@@ -21,7 +21,7 @@ Bird bird_new();
 void bird_free(Bird* bird);
 
 void bird_kill(Bird* bird);
-void bird_update(float ft, Bird* bird, float next_pipe_y);
+void bird_update(float ft, Bird* bird);
 void bird_flap(Bird* bird);
 void bird_draw(Bird* bird);
 
