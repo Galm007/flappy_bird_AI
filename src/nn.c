@@ -19,13 +19,13 @@ void nn_free(NeuralNetwork* nn) {
 float nn_feedforward(NeuralNetwork* nn, float inputs[3]) {
 	int nn_shape[NN_LAYERS] = { 3, 2, 2, 2 };
 
-	float buffer[2][3];
-	memset(buffer, 0.0f, 6 * sizeof(float));
-	for (int i = 0; i < 3; i++)
+	float buffer[2][16];
+	memset(buffer, 0.0f, sizeof(buffer));
+	for (int i = 0; i < nn_shape[0]; i++)
 		buffer[0][i] = inputs[i];
 
 	int wshift = 0, bshift = 0;
-	for (int i = 1; i < 4; i++) {
+	for (int i = 1; i < NN_LAYERS; i++) {
 		for (int j = 0; j < nn_shape[i]; j++) {
 			buffer[i % 2][j] = 0.0f;
 			for (int k = 0; k < nn_shape[i - 1]; k++) {
@@ -37,7 +37,8 @@ float nn_feedforward(NeuralNetwork* nn, float inputs[3]) {
 		}
 	}
 
-	return buffer[1][0] - buffer[1][1];
+	const int last_layer = (NN_LAYERS - 1) % 2;
+	return buffer[last_layer][0] - buffer[last_layer][1];
 }
 
 void nn_cross(NeuralNetwork* dest, NeuralNetwork* a, NeuralNetwork* b) {
