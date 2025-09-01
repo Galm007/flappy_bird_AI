@@ -155,16 +155,18 @@ int main() {
 		DrawTexture(groundtex, ground_posx + groundtex.width, groundy, WHITE);
 
 		// draw bird and score
-		for (int i = 0; i < POPULATION; i++)
-			if (population[i].alive)
+		int alive = 0;
+		for (int i = 0; i < POPULATION; i++) {
+			if (population[i].alive) {
 				bird_draw(&population[i]);
-		if (population[0].alive)
-			bird_draw(&population[0]);
+				alive++;
+			}
+		}
 		render_score(numbertex);
 
 		// additional text about AI
 		char help_text[64];
-		sprintf(help_text, "Gen: %d", gen); 
+		sprintf(help_text, "Gen: %d, Alive: %d/%d", gen, alive, POPULATION); 
 		DrawText(help_text, 5, SCREEN_HEIGHT - 23, 20, BLACK);
 
 		EndDrawing();
