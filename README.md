@@ -1,9 +1,13 @@
 # flappy_bird_AI
 A genetic algorithm implementation that learns to play flappy bird, forked from my [flappy bird game](https://github.com/Galm007/flappy_bird_raylib) made with the Raylib library, written in C.
 
-This video demonstrates the AI learning to play the game with the difficulty ramped all the way up. The spacing between the pipes is minimal while the vertical gap is as small as it gets. The AI learned to master the game under these circumstances in only 8 generations.
+This video demonstrates the AI learning to play the game with the difficulty set to high. The spacing between the pipes is small while the vertical gap is minimal. The AI learned to master the game under these circumstances in only 8 generations.
 
-https://github.com/user-attachments/assets/ea4f9cd1-5703-4039-979e-79bd000d9203
+
+
+https://github.com/user-attachments/assets/d5083db7-b095-42bf-b3cc-83b48093ef69
+
+
 
 The shape of the neural network is 3x2x2x2.
 
