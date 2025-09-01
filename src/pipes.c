@@ -7,11 +7,17 @@
 
 Vector2 pipes[PIPE_COUNT];
 
+static float random_height(float pipe_height) {
+	return GetRandomValue(
+		SCREEN_HEIGHT - GROUND_HEIGHT - pipe_height - PIPE_GAP,
+		pipe_height + PIPE_GAP);
+}
+
 void initialize_pipes(Texture* pipetex) {
 	for (int i = 0; i < PIPE_COUNT; i++)
 		pipes[i] = (Vector2) {
 			SCREEN_WIDTH + 50.0f + PIPE_SPREAD * i,
-			GetRandomValue(SCREEN_HEIGHT - GROUND_HEIGHT - pipetex->height - PIPE_GAP, pipetex->height + PIPE_GAP),
+			random_height(pipetex->height)
 		};
 }
 
@@ -19,8 +25,10 @@ void move_pipes(float ft, Texture* pipetex) {
 	for (int i = 0; i < PIPE_COUNT; i++) {
 		// move pipes
 		pipes[i].x -= SCROLL_SPEED * ft;
-		if (pipes[i].x < -pipetex->width / 2.0f)
+		if (pipes[i].x < -pipetex->width / 2.0f) {
 			pipes[i].x += PIPE_SPREAD * PIPE_COUNT;
+			pipes[i].y = random_height(pipetex->height);
+		}
 	}
 }
 
